@@ -30,7 +30,7 @@ export class MaterialPage implements OnInit {
       this.selectedFileName = null;
     }
   }
-
+//test
   
 
   async uploadFile(selectedFile: any){
