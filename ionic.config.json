@@ -1,0 +1,7 @@
+{
+  "name": "StudyMate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

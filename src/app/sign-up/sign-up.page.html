@@ -1,0 +1,32 @@
+
+
+<ion-content [fullscreen]="true">
+  <br>
+  <div class="topLogo">
+    <ion-img
+     src="../../assets/imgs/navyside.png"
+    alt="Logo"
+></ion-img>
+  </div>
+  <div class="horizontal-line"></div>
+  <h2>Create your account</h2>
+  <p>Start planning your academics now</p>
+
+  <div class="details">
+  
+    <ion-input label="First Name" label-placement="floating" fill="outline" placeholder="Enter first Name" [(ngModel)]='user.firstname'></ion-input>
+    <ion-input label="Last Name" label-placement="floating" fill="outline" placeholder="Enter last Name" [(ngModel)]='user.lastname'></ion-input>
+    <ion-input label="Email" type="email" label-placement="floating" fill="outline" placeholder="Enter email" [(ngModel)]='user.email'></ion-input>
+    <ion-input label="Password" type="password" label-placement="floating" fill="outline" placeholder="Enter Password" [(ngModel)]='user.password'></ion-input>
+    <ion-input label="Confirm Password" type="password" label-placement="floating" fill="outline" [(ngModel)]='user.confirmPassword'></ion-input>
+
+  
+  </div>
+  <br>
+  <p>By creating an account you agree to our terms of service</p>
+
+  <div class="button-container">
+    <ion-button fill="clear" routerLink="/home" style="color: #182434;"><ion-icon slot="start" name="arrow-back"></ion-icon>Cancel</ion-button>
+    <ion-button class="custom-button" (click)=register(user)>Confirm</ion-button>
+  </div>
+</ion-content>

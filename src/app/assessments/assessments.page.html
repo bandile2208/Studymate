@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Assessments</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="add-assessment">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start" >
+      <ion-button class="hi" [ngClass]="{ 'selected': selectedUpcoming }" (click)="toggleSelection('Upcoming')">Upcoming</ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="hi" [ngClass]="{ 'selected': selectedPast }" (click)="toggleSelection('Past')">Past</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+<ng-container *ngIf="selectedUpcoming">
+  <div  *ngIf="assessments">
+  <ion-card *ngFor="let assessment of assessments | async">
+    <ion-card-header>
+      <ion-card-title>Date: {{assessment.Date}}</ion-card-title>
+      <ion-card-subtitle>Module: {{assessment.Module.Name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type: {{assessment.Type}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-button (click)="setOpen(true)">Update</ion-button> 
+      <ion-button (click)="deleteAssessment(assessment.id)">Delete</ion-button>
+    </ion-card-content>
+
+    <ion-modal [isOpen]="isModalOpen" class="modal" mode="md">
+      <ng-template>
+        <ion-header style="--background: #253852;">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="setOpen(false)">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Modal</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="updateAssessment(assessment)">Save</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+        
+          <ion-select label="Type" class="custom-select" [(ngModel)]="assessment.Type">
+            <ion-select-option value="Exam">Exam</ion-select-option>
+            <ion-select-option value="Test">Test</ion-select-option>
+            <ion-select-option value="Practical">Practical</ion-select-option>
+          </ion-select>
+        
+          <ion-input label="Date" type="date" [(ngModel)]="assessment.Date" class="test"></ion-input>
+        
+          <ion-input label="Time" [(ngModel)]="assessment.Time" class="test" ></ion-input>
+        
+          <ion-input label="Duration" type="number" [(ngModel)]="assessment.Duration" class="test" placeholder="{{assessment.Duration}}"></ion-input>
+        <br>
+          <ion-text><strong>Venue</strong></ion-text>
+
+          <ion-input label="Building" class="test" [(ngModel)]="assessment.Building"></ion-input>
+        
+          <ion-input label="Room" class="test" [(ngModel)]="assessment.Room"></ion-input>
+        
+          <ion-input label="Seat" class="test" [(ngModel)]="assessment.Seat"></ion-input>
+        
+
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+  </ion-card>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="selectedPast">
+  <div  *ngIf="pastAssessments">
+    <ion-card *ngFor="let pastAssessment of pastAssessments | async">
+      <ion-card-header>
+        <ion-card-title>Date: {{pastAssessment.Date}}</ion-card-title>
+        <ion-card-subtitle>Type: {{pastAssessment.Type}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <ion-button justify="end" (click)="setOpen(true)" >ReTake</ion-button>  </ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Module: {{pastAssessment.Module.Name}}
+      </ion-card-content>
+
+      <ion-modal [isOpen]="isModalOpen" class="modal" mode="md">
+        <ng-template>
+          <ion-header style="--background: #253852;">
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button (click)="setOpen(false)">Cancel</ion-button>
+              </ion-buttons>
+              <ion-title>Modal</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="updateAssessment(pastAssessment)">Save</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <ion-input label="New Date" type="date"  [(ngModel)]="selectedAssessment.Date" class="test"></ion-input>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+  
+
+
+    </ion-card>
+    </div>
+</ng-container>
+
+</ion-content>

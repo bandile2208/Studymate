@@ -1,0 +1,44 @@
+ion-content{
+  --ion-background-color:#ffffff;
+}
+
+
+h2{
+  color:#18243f
+}
+
+p{
+  color:#18243f;
+}
+
+.topLogo ion-img{
+    height: 70%; 
+    width: 70%;
+}
+
+.horizontal-line {
+    width: 99%;
+    height: 2px;
+    background-color: #18243f; 
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+  }
+  
+  .custom-button {
+    width: 40%;
+    --background: #18243f;
+  }
+
+  ion-input{
+   --background-color: #ffffff;
+   --color: #18243f;
+   --padding-bottom:var(--color);
+  }

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tasks">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Academic Term</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="addAcademicTerms()">
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  
+  <ion-input label="Name" label-placement="floating" placeholder="Academic Term Name" id="name-input" [(ngModel)]="name"></ion-input>
+
+  <ion-input label="Start-Date" label-placement="floating" type="date" id="start-date-input" [(ngModel)]="startDate"></ion-input>
+
+  <ion-input label="End-Date" label-placement="floating" type="date" id="end-date-input" [(ngModel)]="endDate"></ion-input>
+
+</ion-content>

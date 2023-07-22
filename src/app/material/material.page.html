@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar style="--background: #253852;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+    <ion-title>Study Material</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-label>Select File:</ion-label>
+    <input type="file" [(ngModel)]="selectedFile"  accept=".jpg, .png, image/jpeg, image/png, pdf, docx" />
+    <ion-button (click)="uploadFile(selectedFile)">Upload</ion-button>
+  </ion-item>
+  
+   
+
+</ion-content>
+  

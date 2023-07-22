@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start">
+      <ion-menu-button class="hi"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="hi">Tasks</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/tasks/add-task" class="hi">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start" >
+      <ion-button fill="clear" class="lower" [ngClass]="{ 'selected': selectedCurrent }" (click)="toggleSelection('Current')">Current</ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="lower" [ngClass]="{ 'selected': selectedPast }" (click)="toggleSelection('Past')">Past</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ng-container *ngIf="selectedCurrent">
+<div  *ngIf="tasks">
+  <ion-card *ngFor="let task of tasks | async">
+    <ion-card-header>
+      <ion-card-title>Title: {{task.Title}}</ion-card-title>
+      <ion-card-subtitle>Due Date: {{task.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{task.Type}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Module: {{task.Module.Name}}
+    </ion-card-content>
+  </ion-card>
+</div>
+</ng-container>
+
+<ng-container *ngIf="selectedPast">
+  <div  *ngIf="pastTasks">
+    <ion-card *ngFor="let pastTask of pastTasks | async">
+      <ion-card-header>
+        <ion-card-title>Title: {{pastTask.Title}}</ion-card-title>
+        <ion-card-subtitle>Due Date: {{pastTask.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{pastTask.Type}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Module: {{pastTask.Module.Name}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  </ng-container>
+  
+
+
+  
+
+</ion-content>

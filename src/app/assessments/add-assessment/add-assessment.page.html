@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/assessments">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Add Exam/Test</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="addAssessment()">
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  
+  <ion-select label="Module" label-placement="floating" class="custom-select" [(ngModel)]="selectedModule">
+    <ion-select-option value="development software" *ngFor="let module of modules | async" [value]="module">
+      {{ module.Name }} 
+    </ion-select-option>
+  </ion-select>
+
+  <ion-select label="Type" label-placement="floating" class="custom-select" [(ngModel)]="type">
+    <ion-select-option value="Exam">Exam</ion-select-option>
+    <ion-select-option value="Test">Test</ion-select-option>
+    <ion-select-option value="Practical">Practical</ion-select-option>
+  </ion-select>
+
+  <ion-input label="Date" type="date" label-placement="floating" [(ngModel)]="date"></ion-input>
+
+  <ion-input label="Time" type="time" label-placement="floating" [(ngModel)]="time"></ion-input>
+
+  <ion-input label="Duration" label-placement="floating" type="number" [(ngModel)]="duration"></ion-input>
+
+  <ion-text><strong>Venue</strong></ion-text>
+  
+  <ion-input label="Building" label-placement="floating" [(ngModel)]="building"></ion-input>
+  
+  <ion-input label="Room" label-placement="floating" [(ngModel)]="room"></ion-input>
+
+  <ion-input label="Seat" label-placement="floating" [(ngModel)]="seat"></ion-input>
+
+
+  
+</ion-content>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "studymatedigital": {
+      "hosting": {
+        "app": [
+          "studymatedigital"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "studymatedigital"
+  }
+}

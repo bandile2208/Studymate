@@ -1,0 +1,27 @@
+
+
+<ion-content [fullscreen]="true">
+  
+
+  <div id="container">
+    <ion-img
+     src="../../assets/imgs/Navy Logo.png"
+    alt="Logo"
+></ion-img>
+  </div>
+
+  
+      
+      <ion-input label="Email" labelPlacement="stacked" type="email" placeholder="Enter email" [(ngModel)]='user.email'></ion-input>
+    
+      <ion-input label="Password" labelPlacement="stacked" type="password" placeholder="Enter Password" [(ngModel)]='user.password'></ion-input>
+    
+  <div class="button-container">
+    <ion-button fill="clear" routerLink="/home" style="color: #182434;"><ion-icon slot="start" name="arrow-back"></ion-icon>Back</ion-button>
+    <ion-button class="custom-button" (click)=login(user)>Sign in</ion-button>
+  </div>
+  <div class="forgot-password-container">
+    <a (click)="forgotPassword()" >Forgot Password?</a>
+  </div>
+
+</ion-content>

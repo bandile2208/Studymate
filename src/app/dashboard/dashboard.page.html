@@ -1,0 +1,148 @@
+<ion-header>
+    <ion-toolbar style="--background: #253852;">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+  
+      <ion-title style="justify-self: center;">Dashboard</ion-title>
+  
+      <ion-buttons slot="end">
+      </ion-buttons>
+    </ion-toolbar> 
+
+    <ion-toolbar style="--background: #ffffff;">
+
+      
+      <ion-buttons slot="start" >
+        <ion-button fill="clear" class="hi" [ngClass]="{ 'selected': selectedClasses }" (click)="toggleSelection('Classes')"><ion-icon name="calendar"></ion-icon></ion-button>
+        <ion-badge slot="start">11</ion-badge>
+      </ion-buttons>
+  
+      <ion-buttons>
+        <ion-button fill="clear" class="hi" style="margin-left: 45%;" [ngClass]="{ 'selected': selectedTasks }" (click)="toggleSelection('Tasks')"><ion-icon name="checkbox"></ion-icon></ion-button>
+        <ion-badge slot="start">11</ion-badge>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" class="hi" [ngClass]="{ 'selected': selectedExams }" (click)="toggleSelection('Exams')"><ion-icon name="book" ></ion-icon></ion-button>
+        <ion-badge slot="start">11</ion-badge>
+      </ion-buttons>
+    
+    </ion-toolbar>
+  
+  </ion-header>
+
+
+ <ion-content [fullscreen]="true">
+        
+<!-- Displaying classes-->
+  <ng-container *ngIf="selectedClasses">
+    <ng-container *ngIf="modules | async as moduleList">
+
+    <ng-container *ngIf="moduleList.length === 0">
+    <ion-icon class="content" name="calendar" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
+    <p style="color: #b8babd; margin-top: -5px; margin-left: 4rem;">There are no classes or exams today</p>
+    </ng-container>
+
+    <div  *ngIf="moduleList.length > 0">
+      <ion-card *ngFor="let module of modules | async">
+        <ion-card-header>
+          <ion-card-title>Name: {{module.Name}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Building: {{module.Building}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+   </ng-container>
+  </ng-container>
+
+  <!-- Displaying tasks-->
+  <ng-container *ngIf="selectedTasks">
+    <ng-container *ngIf="tasks | async as taskList">
+
+    <ng-container *ngIf="taskList.length === 0">
+    <ion-icon class="content" name="checkbox" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
+    <p style="color: #b8babd; margin-top: -5px; margin-left: 4rem;">There are no tasks due in the next 7 days</p>
+    </ng-container>
+
+    <div  *ngIf="taskList.length > 0">
+      <ion-card *ngFor="let task of tasks | async">
+        <ion-card-header>
+          <ion-card-title>Title: {{task.Title}}</ion-card-title>
+          <ion-card-subtitle>Due Date: {{task.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{task.Type}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Module: {{task.Module.Name}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+   </ng-container>
+  </ng-container>
+
+  <!-- Displaying assessments-->
+  <ng-container *ngIf="selectedExams">
+    <ng-container *ngIf="assessments | async as assessmentList">
+
+    <ng-container *ngIf="assessmentList.length === 0">
+      <ion-icon class="content" name="book" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
+      <p style="color: #b8babd; margin-top: -5px; margin-left: 4rem;">There are no exams scheduled for the next 3 days</p>
+    </ng-container>
+
+    <div  *ngIf="assessmentList.length > 0">
+      <ion-card *ngFor="let assessment of assessments | async">
+        <ion-card-header>
+          <ion-card-title>Building: {{assessment.Building}}</ion-card-title>
+          <ion-card-subtitle>Date: {{assessment.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{assessment.Type}}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Module: {{assessment.Module.Name}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+   </ng-container>
+  </ng-container>
+
+
+</ion-content>
+
+<ion-footer>
+
+<h4 style="color: #253852; margin-left: 1rem;">Tomorrow</h4>
+<div class="horizontal-line"></div>
+
+
+<div style="display: flex;">
+  <ion-card style="width:fit-content;">
+    <ion-card-header>
+      <ion-card-title>0</ion-card-title>
+      <ion-card-subtitle>Classes</ion-card-subtitle>
+      
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card style="width:fit-content;">
+    <ion-card-header>
+      <ion-card-title>{{tomorrowTasksCount}}</ion-card-title>
+      <ion-card-subtitle>Tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-card-subtitle>
+      
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card style="width:fit-content;">
+    <ion-card-header>
+      <ion-card-title>{{tomorrowTestsCount}}</ion-card-title>
+      <ion-card-subtitle>Tests&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-card-subtitle>
+      
+    </ion-card-header>
+  </ion-card>
+</div>
+  
+
+</ion-footer>

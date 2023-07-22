@@ -1,0 +1,55 @@
+ion-content{
+    --ion-background-color:#ffffff;
+}
+
+ion-input{
+    --background: #ffffff;
+    --color: #18243f;
+     border-color:#18243f;
+  }
+
+.custom-select {
+    color: #182434;
+    padding: 2px;
+   /*border: 2px solid #182434;*/
+   
+   
+}
+.custom-check {
+    color: #182434;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    
+}
+
+ion-checkbox{
+    --checkbox-background: #ffffff4d; 
+    --justify: end;
+    
+}
+
+p{
+    color: #182434;
+}
+
+.list{
+    background-color: #ffffff;
+    background: #ffffff;
+}
+
+.item{
+    background-color: #ffffff;
+    color: #182434;
+    background: #ffffff;
+}
+
+.label{
+    background-color: #ffffff;
+    
+    background: #ffffff;
+}
+
+.check{
+    color: black;
+}

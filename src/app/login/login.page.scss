@@ -1,0 +1,44 @@
+ion-content{
+  --ion-background-color:#ffffff;
+}
+
+
+  
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    background-color: #ffffff;
+  }
+  
+  .custom-button {
+    width: 40%;
+    --background: #18243f;
+  }
+
+  .forgot-password-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 93%
+  }
+
+  ion-input{
+    --background: #ffffff;
+    --color: #18243f;
+  }
+
+  ion-item{
+    --color:var(--ion-background-color)
+    --background: #ffffff;
+  }
+
+  .item{
+    background-color: #ffffff;
+    color: #18243f;
+  }
+
+  .inputM{
+    border-color: #18243f;
+  }
+

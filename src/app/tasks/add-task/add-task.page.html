@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tasks">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>New Task</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="addTask()">
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  
+  <br>
+  
+      <ion-select label="Module" label-placement="floating" class="custom-select" [(ngModel)]="selectedModule">
+        <ion-select-option *ngFor="let module of modules | async" [value]="module">
+          {{ module.Name }} 
+        </ion-select-option>
+      </ion-select>
+      
+      <ion-select label="Type" label-placement="floating" class="custom-select" [(ngModel)]="type">
+        <ion-select-option value="assignment">Assignment</ion-select-option>
+        <ion-select-option value="homework">Homework</ion-select-option>
+        <ion-select-option value="revision">Revision</ion-select-option>
+      </ion-select>
+
+      <ion-input label="Date" type="date" label-placement="floating" [(ngModel)]="date"></ion-input>
+
+      <ion-input label="Title" label-placement="floating" [(ngModel)]="title"></ion-input>
+    
+      <ion-textarea label="Details" label-placement="floating" [(ngModel)]="details"></ion-textarea>
+
+
+    
+  
+
+</ion-content>

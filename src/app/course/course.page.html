@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/tasks">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Course</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="addCourse()">
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-input label="Course-Name" label-placement="floating" placeholder="Course-Name" [(ngModel)]="name" class="input"></ion-input>
+
+  <ion-select label="Academic Term" label-placement="floating" class="custom-select" fill="outline" [(ngModel)]="selectedTerm">
+    <ion-select-option *ngFor="let term of academicTerms | async" [value]="term">
+      {{ term.Name }} ({{ term['Start-Date'] }} - {{ term['End-Date'] }})
+    </ion-select-option>
+  </ion-select>
+</ion-content>
