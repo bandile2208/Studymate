@@ -29,7 +29,7 @@ p{
   .button-container {
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 85%;
   }
   
   .custom-button {
@@ -41,4 +41,14 @@ p{
    --background-color: #ffffff;
    --color: #18243f;
    --padding-bottom:var(--color);
+   border-bottom: 3px solid #182434;
+  }
+
+  ion-input,
+  p,
+  h2,
+  .button-container{
+    width: 80%;
+  margin-left: 10%;
+  justify-self: center;
   }

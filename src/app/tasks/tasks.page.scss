@@ -11,10 +11,33 @@ ion-card-header{
     color: rgb(255, 255, 255);
 }
 
-.hi{
-    color: white;
+
+
+
+ion-segment-button.selected{
+    color: #ffffff;
 }
 
-.lower{
+ion-segment{
+    background-color: #253852;
+}
+
+ion-card-subtitle{
+    color: #ffffff;
+  }
+  
+  ion-card-title{
+    color: #ffffff;
+  }
+  
+  ion-menu-button{
+    color: white;
+  }
+
+  ion-card-content{
+    color: #ffffff;
+  }
+
+  .hi{
     color: white;
 }

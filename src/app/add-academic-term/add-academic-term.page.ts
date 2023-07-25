@@ -72,8 +72,8 @@ export class AddAcademicTermPage implements OnInit {
         const data = {
           userID: this.userId,
            Name: this.name,
-          'Start-Date': this.startDate,
-          'End-Date': this.endDate,
+          'StartDate': this.startDate,
+          'EndDate': this.endDate,
         };
        
         await userDocRef.add(data);

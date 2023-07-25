@@ -57,14 +57,7 @@ ion-avatar{
     font-size: 10rem; /* Adjust the font size as needed */
   }
   
-  .content{
-    background-color:#ffffff;
-    color: #b8babd;
-    width:max-content;
-    height: max-content;
-    margin-top: 150px;
-    margin-left: 140px;
-}
+  
 
 .horizontal-line {
     width: 99%;
@@ -78,4 +71,51 @@ ion-card-header{
 
 ion-card{
     background-color: #182434;
+}
+
+ion-card-subtitle{
+  color: #ffffff;
+}
+
+ion-card-title{
+  color: #ffffff;
+}
+
+ion-menu-button{
+  color: white;
+}
+
+.bro{
+  color: white;
+}
+
+.hi{
+  color:#253852;
+}
+
+.hi.selected{
+  color:#93a7c3;
+}
+
+ion-card-content{
+  color: #ffffff;
+}
+
+.center-title {
+  /* Set the title element to expand and take up all available space */
+  flex: 1;
+
+  /* Center the text horizontally and vertically within the title element */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Set the container height to 100% of the viewport height */
+  margin-top: -150px;
 }

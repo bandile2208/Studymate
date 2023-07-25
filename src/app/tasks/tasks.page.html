@@ -8,19 +8,17 @@
 
     <ion-buttons slot="end">
       <ion-button routerLink="/tasks/add-task" class="hi">
-        <ion-icon name="add"></ion-icon>
+        <ion-icon name="add" class="hi"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 
   <ion-toolbar style="--background: #253852;">
-    <ion-buttons slot="start" >
-      <ion-button fill="clear" class="lower" [ngClass]="{ 'selected': selectedCurrent }" (click)="toggleSelection('Current')">Current</ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button fill="clear" class="lower" [ngClass]="{ 'selected': selectedPast }" (click)="toggleSelection('Past')">Past</ion-button>
-    </ion-buttons>
+    <ion-segment>
+      <ion-segment-button  class="hi" [ngClass]="{ 'selected': selectedCurrent }" (click)="toggleSelection('Current')">Current</ion-segment-button>
+    
+      <ion-segment-button  class="hi" [ngClass]="{ 'selected': selectedPast }" (click)="toggleSelection('Past')">Past</ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 
 </ion-header>

@@ -12,6 +12,7 @@ import { LoadingController, ToastController, ModalController } from '@ionic/angu
 })
 export class AssessmentsPage implements OnInit {
 
+  minDate: string; 
   userId: string = '';
   assignmentID: string = '';
   assessmentsCollection: AngularFirestoreCollection<any> | undefined;
@@ -39,7 +40,10 @@ export class AssessmentsPage implements OnInit {
     private firestore: AngularFirestore,
     private loadingController: LoadingController,
     private toast:ToastController,
-    private modalCtrl: ModalController) { }
+    private modalCtrl: ModalController) { 
+      const currentDate = new Date().toISOString().slice(0, 10);
+      this.minDate = currentDate;
+    }
 
   ngOnInit() { 
 

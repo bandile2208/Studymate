@@ -3,7 +3,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-task',
@@ -12,11 +12,17 @@ import { Observable } from 'rxjs';
 })
 export class AddTaskPage implements OnInit {
 
+  minDate: string; 
 
   constructor(private toast:ToastController,
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
-    private loadingController: LoadingController) {}
+    private loadingController: LoadingController,
+    private navCtrl: NavController) {
+
+      const currentDate = new Date().toISOString().slice(0, 10);
+      this.minDate = currentDate;
+    }
 
   modulesCollection: AngularFirestoreCollection<any> | undefined;
   modules: Observable<any[]> | undefined;
@@ -40,6 +46,7 @@ export class AddTaskPage implements OnInit {
   }
 
   async addTask(){
+    if(this.validation()){
 
     let loader = this.loadingController.create({
       message: "please wait",
@@ -66,10 +73,12 @@ export class AddTaskPage implements OnInit {
         (await loader).dismiss();
 
         this.showToast("Task added successfully!");
+        await this.navCtrl.navigateBack('/tasks');
       }
     } catch (error) {
       this.showToast("Error adding data");
     }
+  }
   }
 
   showToast ( message : string ){
@@ -77,6 +86,35 @@ export class AddTaskPage implements OnInit {
     message: message ,
    duration: 2000
    }). then ( toastData => toastData.present ());
+  }
+
+  validation()
+  {
+    if(!this.selectedModule)
+    {
+      this.showToast("Please Select a Module");
+      return false;
+  
+    }
+    if(!this.type)
+    {
+      this.showToast("Please Select Task Type");
+      return false;
+  
+    }
+    if(!this.date)
+    {
+      this.showToast("Please Enter the Due Date");
+      return false;
+  
+    }
+    if(!this.title)
+    {
+      this.showToast("Please Enter the Title");
+      return false;
+  
+    }
+    return true;
   }
 
 }

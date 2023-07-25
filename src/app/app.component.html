@@ -1,4 +1,4 @@
-<ion-app mode="md">
+<ion-app >
   
   <ion-menu side="start" menuId="first" contentId="main" style="--ion-background-color: #182434;" >
     
@@ -6,18 +6,18 @@
       <ion-avatar slot="start">
         <img alt="Silhouette of a person's head" src="../../assets/icon/avatar.svg" />
       </ion-avatar>
-      <h4 style="margin-left: 10px;">{{ firstName }} {{ lastName }}</h4>
+      <h4 style="margin-left: 10px;" class="hi">{{ firstName }} {{ lastName }}</h4>
     </ion-header>
 
       <br>
       <ion-content style="--ion-background-color: #182434;" class="menuButtons">
       <ion-button  fill="clear" class="icon-button" routerLink="/dashboard" (click)="closeMenu()"> <ion-icon name="speedometer"></ion-icon> <span>Dashboard</span></ion-button>
-      <ion-button  fill="clear" class="icon-button" routerLink="/calendar" (click)="closeMenu()"> <ion-icon name="calendar-outline"></ion-icon> <span>Calendar</span></ion-button>
+      <ion-button  fill="clear" class="icon-button" routerLink="/calendar" (click)="closeMenu()"> <ion-icon name="reader-outline"></ion-icon> <span>Flashcards</span></ion-button>
       <ion-button  fill="clear" class="icon-button" routerLink="/tasks" (click)="closeMenu()"> <ion-icon name="list-outline"></ion-icon> <span>Tasks</span></ion-button>
       <ion-button  fill="clear" class="icon-button" routerLink="/assessments" (click)="closeMenu()"> <ion-icon name="book-outline"></ion-icon> <span>Assessments</span></ion-button>
-      <ion-button  fill="clear" class="icon-button" routerLink="/schedule" (click)="closeMenu()"> <ion-icon name="calendar-number"></ion-icon> <span>Schedule</span></ion-button>
-      <ion-button  fill="clear" class="icon-button" routerLink="/material"> <ion-icon name="bookmarks-outline"></ion-icon> <span>Study Material</span></ion-button>
-      <ion-button  fill="clear" class="icon-button" routerLink="/settings" (click)="closeMenu()"> <ion-icon name="settings-outline"></ion-icon> <span>Settings</span></ion-button>
+      <ion-button  fill="clear" class="icon-button" routerLink="/schedule" (click)="closeMenu()"> <ion-icon name="eye-outline"></ion-icon> <span>Overview</span></ion-button>
+      <ion-button  fill="clear" class="icon-button" routerLink="/material" (click)="closeMenu()"> <ion-icon name="bookmarks-outline"></ion-icon> <span>Study Material</span></ion-button>
+      <!--<ion-button  fill="clear" class="icon-button" routerLink="/settings" (click)="closeMenu()"> <ion-icon name="settings-outline"></ion-icon> <span>Settings</span></ion-button>-->
       <ion-button  fill="clear" class="icon-button" routerLink="/home" (click)="closeMenu()" (click)="signOut()"> <ion-icon name="log-out-outline"></ion-icon> <span>Sign-Out</span></ion-button>
       </ion-content>
 

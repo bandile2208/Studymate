@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar style="--background: #253852;">
     <ion-buttons slot="start">
-      <ion-button routerLink="/tasks">
+      <ion-button routerLink="/schedule" class="hi">
         Cancel
       </ion-button>
     </ion-buttons>
 
-    <ion-title>Course</ion-title>
+    <ion-title class="hi">Course</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="addCourse()">
+      <ion-button (click)="addCourse()" class="hi">
         Save
       </ion-button>
     </ion-buttons>
@@ -20,7 +20,7 @@
   
   <ion-input label="Course-Name" label-placement="floating" placeholder="Course-Name" [(ngModel)]="name" class="input"></ion-input>
 
-  <ion-select label="Academic Term" label-placement="floating" class="custom-select" fill="outline" [(ngModel)]="selectedTerm">
+  <ion-select label="Academic Term" label-placement="floating" class="custom-select" [(ngModel)]="selectedTerm">
     <ion-select-option *ngFor="let term of academicTerms | async" [value]="term">
       {{ term.Name }} ({{ term['Start-Date'] }} - {{ term['End-Date'] }})
     </ion-select-option>

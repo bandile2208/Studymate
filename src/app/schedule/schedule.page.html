@@ -3,24 +3,106 @@
   <ion-header>
     <ion-toolbar style="--background: #253852;">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button class="hi"></ion-menu-button>
       </ion-buttons>
   
-      <ion-title>Schedule</ion-title>
+      <ion-title class="hi">Overview</ion-title>
   
       <ion-buttons slot="end">
-        <ion-button>
-          <ion-icon name="add-circle-outline"></ion-icon>
-        </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
 <ion-content [fullscreen]="true">
   
+<ion-text class="list">Academic Terms</ion-text>
+  <ng-container  *ngIf="academicTerms">
+    <ion-card *ngFor="let academicTerm of academicTerms | async">
+      <ion-card-header>
+        <ion-card-title>{{academicTerm.Name}}</ion-card-title>
+        <ion-card-subtitle>{{academicTerm.StartDate}} To {{academicTerm.EndDate}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+  <br>
+  <ion-button routerLink="/add-academic-term">Add Academic Term</ion-button>
+<br>
+<ion-text class="list">Courses</ion-text>
+  <ng-container  *ngIf="courses">
+    <ion-card *ngFor="let course of courses | async">
+      <ion-card-header>
+        <ion-card-title>{{course.Name}}</ion-card-title>
+        <ion-card-subtitle>{{course.academicTerm.Name}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+  <br>
+  <ion-button routerLink="/course">Add Course</ion-button>
 
-  <iframe src=""></iframe>
-  
-  
+<br>
+<ion-text class="list">Modules</ion-text>
+  <ng-container  *ngIf="modules">
+    <ion-card *ngFor="let module of modules | async">
+      <ion-card-header>
+        <ion-card-title>{{module.Name}}</ion-card-title>
+        <ion-card-subtitle>{{module.Course.Name}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+  <br>
+  <ion-button routerLink="/module">Add Module</ion-button>
+  <br>
+
+<ion-text class="list">Tasks</ion-text>
+<br>
+<ion-text class="li">Pending</ion-text>
+  <ng-container  *ngIf="tasks">
+    <ion-card *ngFor="let task of tasks | async">
+      <ion-card-header>
+        <ion-card-title>{{task.Title}}</ion-card-title>
+        <ion-card-subtitle>{{task.Module.Name}}</ion-card-subtitle>
+        <ion-card-subtitle>{{task.Date}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+  <br>
+  <ion-button routerLink="/tasks/add-task">Add Task</ion-button>
+<br>
+<ion-text class="li">Completed</ion-text>
+  <ng-container  *ngIf="pastTasks">
+    <ion-card *ngFor="let pastTask of pastTasks | async">
+      <ion-card-header>
+        <ion-card-title>{{pastTask.Title}}</ion-card-title>
+        <ion-card-subtitle>{{pastTask.Module.Name}}</ion-card-subtitle>
+        <ion-card-subtitle>{{pastTask.Date}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+<br>
+<ion-text class="list">Assessments</ion-text>
+<br>
+<ion-text class="li">Pending</ion-text>
+<ng-container  *ngIf="assessments">
+  <ion-card *ngFor="let assessment of assessments | async">
+    <ion-card-header>
+      <ion-card-title>{{assessment.Title}}</ion-card-title>
+      <ion-card-subtitle>{{assessment.Module.Name}}</ion-card-subtitle>
+      <ion-card-subtitle>{{assessment.Date}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+</ng-container>
+<br>
+<ion-button routerLink="/assessments/add-assessment">Add Assessment</ion-button>
+<br>
+<ion-text class="li">Completed</ion-text>
+  <ng-container  *ngIf="pastAssessments">
+    <ion-card *ngFor="let pastAssessment of pastAssessments | async">
+      <ion-card-header>
+        <ion-card-title>{{pastAssessment.Title}}</ion-card-title>
+        <ion-card-subtitle>{{pastAssessment.Module.Name}}</ion-card-subtitle>
+        <ion-card-subtitle>{{pastAssessment.Date}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
 
 </ion-content>

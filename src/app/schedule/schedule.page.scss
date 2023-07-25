@@ -1,8 +1,43 @@
 ion-content{
     --ion-background-color:#ffffff;
 }
-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+.list{
+    color: #182834;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.li{
+    color: #182834;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.hi{
+  color: white;
+}
+
+ion-card-subtitle{
+    color: #ffffff;
   }
+  
+  ion-card-title{
+    color: #ffffff;
+  }
+  
+  ion-menu-button{
+    color: white;
+  }
+
+  ion-card-content{
+    color: #ffffff;
+  }
+
+  ion-card{
+    background-color:#182434;
+    color: rgb(255, 255, 255);
+}
+
+ion-card-header{
+    color: rgb(255, 255, 255);
+}

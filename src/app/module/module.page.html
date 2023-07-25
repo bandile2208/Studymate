@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar style="--background: #253852;">
     <ion-buttons slot="start">
-      <ion-button>
+      <ion-button class="hi" routerLink="/schedule">
         Cancel
       </ion-button>
     </ion-buttons>
 
-    <ion-title>New Module</ion-title>
+    <ion-title class="hi">New Module</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="addModule()">
+      <ion-button (click)="addModule()" class="hi">
         Save
       </ion-button>
     </ion-buttons>
@@ -20,7 +20,7 @@
   
   <ion-input label="Subject/Module" label-placement="floating" placeholder="Module name" [(ngModel)]="name"></ion-input>
 
-  <ion-select label="Course" label-placement="floating" class="custom-select" fill="outline" [(ngModel)]="selectedCourse">
+  <ion-select label="Course" label-placement="floating" class="custom-select"  [(ngModel)]="selectedCourse">
     <ion-select-option *ngFor="let course of courses | async" [value]="course">
       {{ course.Name }}
     </ion-select-option>
@@ -32,7 +32,7 @@
 
   <ion-input label="Lecturer" label-placement="floating" placeholder="Lecturer-Name" [(ngModel)]="lecturer"></ion-input>
 
-  <ion-select label="Occurs" label-placement="floating" class="custom-select" fill="outline" [(ngModel)]="selectedOption">
+  <ion-select label="Occurs" label-placement="floating" class="custom-select"  [(ngModel)]="selectedOption">
     <ion-select-option value="multiple">Multiple Times(Repeats)</ion-select-option>
     <ion-select-option value="once">Once-Off</ion-select-option>
   </ion-select>
@@ -40,7 +40,7 @@
   
   <ng-container *ngIf="selectedOption === 'once'">
    
-      <ion-input label="Date" type="date" [(ngModel)]="date"></ion-input>
+      <ion-input label="Date" type="date" [(ngModel)]="date" [min]="minDate"></ion-input>
       <ion-input label="Start-Time" type="time" [(ngModel)]="startTime"></ion-input>
       <ion-input label="End-Time" type="time" [(ngModel)]="endTime"></ion-input>
   </ng-container>
@@ -51,20 +51,45 @@
       <ion-input label="End-Time" type="time" [(ngModel)]="endTime"></ion-input>
 
       <p>Days of the week</p>
-      <!--<ion-checkbox class="custom-check" value="Monday">Monday</ion-checkbox>
-      <ion-checkbox class="custom-check" value="Tuesday">Tuesday</ion-checkbox>
-      <ion-checkbox class="custom-check" value="Wednesday">Wednesday</ion-checkbox>
-      <ion-checkbox class="custom-check" value="Thursday">Thursday</ion-checkbox>
-      <ion-checkbox class="custom-check" value="Friday">Friday</ion-checkbox>
-      <ion-checkbox class="custom-check" value="Saturday">Saturday</ion-checkbox>
-      <ion-checkbox class="custom-check" value="Sunday">Sunday</ion-checkbox>-->
+      
+  <ion-list class="list">
+    <ion-item>
+      <ion-checkbox class="check" [(ngModel)]="selectedDay" (ionChange)="onCheckboxChange($event)">Monday</ion-checkbox>
+      <ion-input *ngIf="selectedDay === 'Monday'" [(ngModel)]="selectedTime" type="time"></ion-input>
+    </ion-item>
 
-      <ion-list *ngFor="let day of daysOfWeek" class="list">
-        <ion-item>
-          <ion-checkbox [(ngModel)]="day.selected" (ionChange)="updateSelectedValues(day)" class="check">{{day.name}}</ion-checkbox>
-          <ion-input *ngIf="day.selected"[(ngModel)]="day.time" type="time" (ionChange)="updateSelectedValues(day)"></ion-input>
-        </ion-item>
-      </ion-list>
+    <ion-item>
+      <ion-checkbox class="check" value="Tuesday" [(ngModel)]="selectedDay1" (ionChange)="onCheckboxChange1($event)">Tuesday</ion-checkbox>
+      <ion-input *ngIf="selectedDay1 === 'Tuesday'" [(ngModel)]="selectedTime1" type="time"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox class="check" value="Wednesday" [(ngModel)]="selectedDay2" (ionChange)="onCheckboxChange2($event)">Wednesday</ion-checkbox>
+      <ion-input *ngIf="selectedDay2 === 'Wednesday'" [(ngModel)]="selectedTime2" type="time"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox class="check" value="Thursday" [(ngModel)]="selectedDay3" (ionChange)="onCheckboxChange3($event)">Thursday</ion-checkbox>
+      <ion-input *ngIf="selectedDay3 === 'Thursday'" [(ngModel)]="selectedTime3" type="time"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox class="check"  [(ngModel)]="selectedDay4" (ionChange)="onCheckboxChange4($event)">Friday</ion-checkbox>
+      <ion-input *ngIf="selectedDay4 === 'Friday'" [(ngModel)]="selectedTime4" type="time"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox class="check" value="Saturday" [(ngModel)]="selectedDay5" (ionChange)="onCheckboxChange5($event)">Saturday</ion-checkbox>
+      <ion-input *ngIf="selectedDay5 === 'Saturday'" [(ngModel)]="selectedTime5" type="time"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox class="check" value="Sunday" [(ngModel)]="selectedDay6" (ionChange)="onCheckboxChange6($event)">Sunday</ion-checkbox>
+      <ion-input *ngIf="selectedDay6 === 'Sunday'" [(ngModel)]="selectedTime6" type="time"></ion-input>
+    </ion-item>
+  </ion-list>
+
+
        
   </ng-container>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{User} from '../model/user.mode';
-import { LoadingController, ToastController,NavController} from '@ionic/angular';
+import { LoadingController, ToastController,NavController, ModalController} from '@ionic/angular';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import { FirebaseError } from 'firebase/app';
 import { UserCredential } from 'firebase/auth';
@@ -14,11 +14,13 @@ import { UserCredential } from 'firebase/auth';
 export class LoginPage implements OnInit {
   user ={ } as User;
   
+  reset = '';
 
   constructor(private loadingController: LoadingController,
     private  toast:ToastController,
     private navCtrl:NavController,
-    private afAuth:AngularFireAuth) { }
+    private afAuth:AngularFireAuth,
+    private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
@@ -102,7 +104,7 @@ export class LoginPage implements OnInit {
 
 
   async forgotPassword() {
-    if (!this.user.email) {
+    if (!this.reset) {
       this.showToast('Please enter your email');
       return;
     }
@@ -114,7 +116,7 @@ export class LoginPage implements OnInit {
     await loader.present();
   
     try {
-      await this.afAuth.sendPasswordResetEmail(this.user.email);
+      await this.afAuth.sendPasswordResetEmail(this.reset);
       this.showToast('Password reset email sent');
     } catch (e: unknown) {if (e instanceof FirebaseError) {
       if (e.code === "auth/invalid-email" ) {
@@ -158,6 +160,16 @@ export class LoginPage implements OnInit {
     message: message ,
    duration: 2000
    }). then ( toastData => toastData.present ());
+  }
+
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  cancel() {
+    return this.modalCtrl.dismiss(null, 'cancel');
   }
 
 }

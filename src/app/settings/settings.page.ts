@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { initializeApp } from "firebase/app";
+import { getMessaging, getToken } from "firebase/messaging";
+import { onBackgroundMessage} from "firebase/messaging/sw";
 
 @Component({
   selector: 'app-settings',
@@ -10,6 +13,7 @@ export class SettingsPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
 
+    
+}
 }

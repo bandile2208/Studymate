@@ -1,8 +1,15 @@
 ion-content{
-    --ion-background-color:#ffffff;
+   --background: url(../../assets/imgs/Contact.png);
+   background-size: cover;
+   background-attachment: fixed;
 }
 
 ion-button{
     --background: #18243f;
 }
+
+.logo{
+    color: white;
+}
+
 

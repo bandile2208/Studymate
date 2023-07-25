@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-module',
@@ -11,15 +12,6 @@ import { Observable } from 'rxjs';
 })
 export class ModulePage implements OnInit {
 
-  daysOfWeek= [
-  {name: 'Monday', selected: false, time: null},
-  {name: 'Tuesday', selected: false, time: null},
-  {name: 'Wednesday', selected: false, time: null},
-  {name: 'Thursday', selected: false, time: null},
-  {name: 'Friday', selected: false, time: null},
-  {name: 'Saturday', selected: false, time: null},
-  {name: 'Sunday', selected: false, time: null},
-];
  
   userId: string = '';
   name: string='';
@@ -35,20 +27,74 @@ export class ModulePage implements OnInit {
   startTime: string='';
   endTime: string='';
 
+  selectedDay: string='';
+  selectedTime: string='';
 
+  onCheckboxChange(event: any) {
+    this.selectedDay = event.target.checked ? 'Monday' : '';
+  }
 
+  selectedDay1: string='';
+  selectedTime1: string='';
+
+  onCheckboxChange1(event: any) {
+    this.selectedDay1 = event.target.checked ? 'Tuesday' : '';
+  }
+
+  selectedDay2: string='';
+  selectedTime2: string='';
+
+  onCheckboxChange2(event: any) {
+    this.selectedDay2 = event.target.checked ? 'Wednesday' : '';
+  }
+
+  selectedDay3: string='';
+  selectedTime3: string='';
+
+  onCheckboxChange3(event: any) {
+    this.selectedDay3 = event.target.checked ? 'Thursday' : '';
+  }
+
+  selectedDay4: string='';
+  selectedTime4: string='';
+
+  onCheckboxChange4(event: any) {
+    this.selectedDay4 = event.target.checked ? 'Friday' : '';
+  }
+
+  selectedDay5: string='';
+  selectedTime5: string='';
+
+  onCheckboxChange5(event: any) {
+    this.selectedDay5 = event.target.checked ? 'Saturday' : '';
+  }
+
+  selectedDay6: string='';
+  selectedTime6: string='';
+
+  onCheckboxChange6(event: any) {
+    this.selectedDay6 = event.target.checked ? 'Sunday' : '';
+  }
+
+  minDate: string; 
 
   selectedOption: string='';
 
   constructor(private loadingController: LoadingController,
     private toast:ToastController,
     private afAuth: AngularFireAuth,
-    private firestore: AngularFirestore) { 
+    private firestore: AngularFirestore,
+    private navC: NavController) { 
+
     this.selectedOption='once';
+    const currentDate = new Date().toISOString().slice(0, 10);
+      this.minDate = currentDate;
   }
 
 
   ngOnInit() {
+
+
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userId = user.uid;
@@ -62,6 +108,9 @@ export class ModulePage implements OnInit {
 
   async addModule()
   {
+
+if(this.validation()){
+
     let loader = this.loadingController.create({
       message: "please wait",
     });
@@ -95,8 +144,10 @@ export class ModulePage implements OnInit {
          (await loader).dismiss();
  
          this.showToast("Data added successfully!");
-
+         this.navC.back();
         }
+
+
         else if(this.selectedOption === 'multiple')
         {
           const data = {
@@ -109,7 +160,29 @@ export class ModulePage implements OnInit {
             Occurs: this.selectedOption,
             StartTime: this.startTime,
             EndTime: this.endTime,
-            Days: this.selectedValues
+           // Days: this.selectedValues
+           
+           Day: this.selectedDay,
+           Time: this.selectedTime,
+
+           Day1: this.selectedDay1,
+           Time1: this.selectedTime1,
+           
+           Day2: this.selectedDay2,
+           Time2: this.selectedTime2,
+
+           Day3: this.selectedDay3,
+           Time3: this.selectedTime3,
+
+           Day4: this.selectedDay4,
+           Time4: this.selectedTime4,
+
+           Day5: this.selectedDay5,
+           Time5: this.selectedTime5,
+
+           Day6: this.selectedDay6,
+           Time6: this.selectedTime6,
+
          };
         
          await userDocRef.add(data);
@@ -117,7 +190,7 @@ export class ModulePage implements OnInit {
          (await loader).dismiss();
  
          this.showToast("Data added successfully!");
-
+         this.navC.back();
         }
 
       }
@@ -127,34 +200,6 @@ export class ModulePage implements OnInit {
       this.showToast("Error adding data");
     }
   }
-
-  selectedValues: any[] = [];
-
-  updateSelectedValues(day: any){
-    const { name, selected, time } = day;
-
-    if (selected){
-      const existingDay = this.selectedValues.find((value) => value.name === name);
-
-      if (!existingDay) {
-        // Add the day and time to the selectedValues array
-        this.selectedValues.push({ name, time });
-        this.showToast("Pushed");
-        console.log(this.selectedValues);
-      } else {
-        // Update the time for the existing day
-        existingDay.time = time;
-        this.showToast("Updated");
-      }
-    }
-
-    else{
-      const index = this.selectedValues.findIndex((value) => value.name === name);
-      if(index !== -1){
-        this.selectedValues.splice(index, 1);
-        this.showToast("Removed");
-      }
-    }
   }
 
   //selectedVAlues array can be used for data update
@@ -164,6 +209,39 @@ export class ModulePage implements OnInit {
     message: message ,
    duration: 2000
    }). then ( toastData => toastData.present ());
+  }
+
+  validation()
+  {
+    if(!this.name)
+    {
+      this.showToast("Please Select a Module");
+      return false;
+  
+    }
+    if(!this.selectedCourse)
+    {
+      this.showToast("Please Select a Course");
+      return false;
+  
+    }
+    if(!this.selectedOption)
+    {
+      this.showToast("Please Select if Class occurs once or Repeats");
+      return false;
+  
+    }
+    if(this.selectedOption === 'once' && !this.date){
+      
+        this.showToast("Please Enter the Date");
+        return false;
+    }
+    if(this.selectedOption === 'once' && !this.startTime){
+      
+      this.showToast("Please Enter the Starting Time");
+      return false;
+    }
+    return true;
   }
 
 }

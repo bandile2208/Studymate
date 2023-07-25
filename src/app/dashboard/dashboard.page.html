@@ -1,113 +1,232 @@
 <ion-header>
-    <ion-toolbar style="--background: #253852;">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-  
-      <ion-title style="justify-self: center;">Dashboard</ion-title>
-  
-      <ion-buttons slot="end">
-      </ion-buttons>
-    </ion-toolbar> 
+  <ion-toolbar style="--background: #253852;">
+    <ion-buttons slot="start">
+      <ion-menu-button class="bro"></ion-menu-button>
+    </ion-buttons>
 
-    <ion-toolbar style="--background: #ffffff;">
+    <ion-title class="bro">Dashboard</ion-title>
 
-      
-      <ion-buttons slot="start" >
-        <ion-button fill="clear" class="hi" [ngClass]="{ 'selected': selectedClasses }" (click)="toggleSelection('Classes')"><ion-icon name="calendar"></ion-icon></ion-button>
-        <ion-badge slot="start">11</ion-badge>
-      </ion-buttons>
-  
-      <ion-buttons>
-        <ion-button fill="clear" class="hi" style="margin-left: 45%;" [ngClass]="{ 'selected': selectedTasks }" (click)="toggleSelection('Tasks')"><ion-icon name="checkbox"></ion-icon></ion-button>
-        <ion-badge slot="start">11</ion-badge>
-      </ion-buttons>
+    <ion-buttons slot="end">
+    </ion-buttons>
+  </ion-toolbar> 
 
-      <ion-buttons slot="end">
-        <ion-button fill="clear" class="hi" [ngClass]="{ 'selected': selectedExams }" (click)="toggleSelection('Exams')"><ion-icon name="book" ></ion-icon></ion-button>
-        <ion-badge slot="start">11</ion-badge>
-      </ion-buttons>
+  <ion-toolbar style="--background: #ffffff;">
+
     
-    </ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-button fill="clear" class="hi" [ngClass]="{ 'selected': selectedClasses }" (click)="toggleSelection('Classes')"><ion-icon name="calendar"></ion-icon></ion-button>
+    </ion-buttons>
+
+    <ion-buttons>
+      <ion-button fill="clear" class="hi" style="margin-left: 45%;" [ngClass]="{ 'selected': selectedTasks }" (click)="toggleSelection('Tasks')"><ion-icon name="checkbox"></ion-icon></ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="hi" [ngClass]="{ 'selected': selectedExams }" (click)="toggleSelection('Exams')"><ion-icon name="book" ></ion-icon></ion-button>
+    </ion-buttons>
   
-  </ion-header>
+  </ion-toolbar>
+
+</ion-header>
 
 
- <ion-content [fullscreen]="true">
-        
+<ion-content>
+      
 <!-- Displaying classes-->
-  <ng-container *ngIf="selectedClasses">
-    <ng-container *ngIf="modules | async as moduleList">
+<ng-container *ngIf="selectedClasses">
 
-    <ng-container *ngIf="moduleList.length === 0">
-    <ion-icon class="content" name="calendar" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
-    <p style="color: #b8babd; margin-top: -5px; margin-left: 4rem;">There are no classes or exams today</p>
-    </ng-container>
+  <ng-container *ngIf="modules | async as moduleList">
 
-    <div  *ngIf="moduleList.length > 0">
-      <ion-card *ngFor="let module of modules | async">
-        <ion-card-header>
-          <ion-card-title>Name: {{module.Name}}</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Building: {{module.Building}}
-        </ion-card-content>
-      </ion-card>
-    </div>
+    
+  <div  *ngIf="moduleList.length > 0">
+    <ion-card *ngFor="let module of modules | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module.Name}} </ion-card-title>
+        <ion-card-subtitle>Day: {{module.Day}} | {{module.Time}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
 
-   </ng-container>
-  </ng-container>
 
-  <!-- Displaying tasks-->
-  <ng-container *ngIf="selectedTasks">
-    <ng-container *ngIf="tasks | async as taskList">
+ <ng-container *ngIf="modules1 | async as moduleList1">
+  <div  *ngIf="moduleList1.length > 0">
+    <ion-card *ngFor="let module1 of modules1 | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module1.Name}} </ion-card-title>
+        <ion-card-subtitle>Day: {{module1.Day}} | {{module1.Time}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module1.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
 
+ <ng-container *ngIf="modules2 | async as moduleList2">
+  <div  *ngIf="moduleList2.length > 0">
+    <ion-card *ngFor="let module2 of modules2 | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module2.Name}} </ion-card-title>
+        <ion-card-subtitle>Day: {{module2.Day}} | {{module2.Time}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module2.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
+
+
+ <ng-container *ngIf="modules3 | async as moduleList3">
+  <div  *ngIf="moduleList3.length > 0">
+    <ion-card *ngFor="let module3 of modules3 | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module3.Name}} </ion-card-title>
+        <ion-card-subtitle>Day: {{module3.Day}} | {{module3.Time}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module3.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
+
+ <ng-container *ngIf="modules4 | async as moduleList4">
+  <div  *ngIf="moduleList4.length > 0">
+    <ion-card *ngFor="let module4 of modules4 | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module4.Name}} </ion-card-title>
+        <ion-card-subtitle>Day: {{module4.Day}} | {{module4.Time}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module4.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
+
+
+ <ng-container *ngIf="modules5 | async as moduleList5">
+  <div  *ngIf="moduleList5.length > 0">
+    <ion-card *ngFor="let module5 of modules5 | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module5.Name}} </ion-card-title>
+        <ion-card-subtitle>Day: {{module5.Day}} | {{module5.Time}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module5.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
+
+
+ <ng-container *ngIf="modules6 | async as moduleList6">
+  <div  *ngIf="moduleList6.length > 0">
+    <ion-card *ngFor="let module6 of modules6 | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module6.Name}} </ion-card-title>
+        <ion-card-subtitle>Day: {{module6.Day}} | {{module6.Time}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module6.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
+
+ <ng-container *ngIf="modules7 | async as moduleList7">
+  <div  *ngIf="moduleList7.length > 0">
+    <ion-card *ngFor="let module7 of modules7 | async">
+      <ion-card-header>
+        <ion-card-title>Name: {{module7.Name}} </ion-card-title>
+        <ion-card-subtitle>Time: {{module7.StartTime}} | {{module7.EndTime}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{module7.Building}} Room: {{module7.Room}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+ </ng-container>
+
+
+ <!--<ng-template #noClasses>
+  <div class="center-container">
+    <ion-icon class="content" name="calendar" style="height: 30%; width: 30%; color: #b8babd;"></ion-icon>
+    <p style="color: #b8babd;">There are no classes today</p>
+  </div>
+</ng-template>-->
+
+</ng-container>
+
+
+
+<!-- Displaying tasks-->
+<ng-container *ngIf="selectedTasks">
+
+  <ng-container *ngIf="tasks | async as taskList">
+
+  <div  *ngIf="taskList.length > 0">
+    <ion-card *ngFor="let task of tasks | async">
+      <ion-card-header>
+        <ion-card-title>Title: {{task.Title}}</ion-card-title>
+        <ion-card-subtitle>Due Date: {{task.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{task.Type}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Module: {{task.Module.Name}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="center-container">
     <ng-container *ngIf="taskList.length === 0">
-    <ion-icon class="content" name="checkbox" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
-    <p style="color: #b8babd; margin-top: -5px; margin-left: 4rem;">There are no tasks due in the next 7 days</p>
+      <ion-icon name="book" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
+      <p style="color: #b8babd;">There are no exams scheduled for Today</p>
     </ng-container>
+  </div>
+ </ng-container>
 
-    <div  *ngIf="taskList.length > 0">
-      <ion-card *ngFor="let task of tasks | async">
-        <ion-card-header>
-          <ion-card-title>Title: {{task.Title}}</ion-card-title>
-          <ion-card-subtitle>Due Date: {{task.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{task.Type}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Module: {{task.Module.Name}}
-        </ion-card-content>
-      </ion-card>
-    </div>
+</ng-container>
 
-   </ng-container>
-  </ng-container>
+<!-- Displaying assessments-->
+<ng-container *ngIf="selectedExams">
+  <ng-container *ngIf="assessments | async as assessmentList">
 
-  <!-- Displaying assessments-->
-  <ng-container *ngIf="selectedExams">
-    <ng-container *ngIf="assessments | async as assessmentList">
+  <div  *ngIf="assessmentList.length > 0">
+    <ion-card *ngFor="let assessment of assessments | async">
+      <ion-card-header>
+        <ion-card-title>Module: {{assessment.Module.Name}}</ion-card-title>
+        <ion-card-subtitle>Date: {{assessment.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{assessment.Type}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Building: {{assessment.Building}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 
+  <div class="center-container">
     <ng-container *ngIf="assessmentList.length === 0">
-      <ion-icon class="content" name="book" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
-      <p style="color: #b8babd; margin-top: -5px; margin-left: 4rem;">There are no exams scheduled for the next 3 days</p>
+      <ion-icon name="book" style="height: 30%; width: 30%; color: #b8babd;" ></ion-icon>
+      <p style="color: #b8babd;">There are no exams scheduled for Today</p>
     </ng-container>
+  </div>
 
-    <div  *ngIf="assessmentList.length > 0">
-      <ion-card *ngFor="let assessment of assessments | async">
-        <ion-card-header>
-          <ion-card-title>Building: {{assessment.Building}}</ion-card-title>
-          <ion-card-subtitle>Date: {{assessment.Date}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Type: {{assessment.Type}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Module: {{assessment.Module.Name}}
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-   </ng-container>
-  </ng-container>
+ </ng-container>
+</ng-container>
 
 
 </ion-content>
@@ -119,30 +238,32 @@
 
 
 <div style="display: flex;">
-  <ion-card style="width:fit-content;">
-    <ion-card-header>
-      <ion-card-title>0</ion-card-title>
-      <ion-card-subtitle>Classes</ion-card-subtitle>
-      
-    </ion-card-header>
-  </ion-card>
+  <!--
+<ion-card style="width:fit-content;">
+  <ion-card-header>
+    <ion-card-title>0</ion-card-title>
+    <ion-card-subtitle>Classes</ion-card-subtitle>
+    
+  </ion-card-header>
+</ion-card>
+-->
 
-  <ion-card style="width:fit-content;">
-    <ion-card-header>
-      <ion-card-title>{{tomorrowTasksCount}}</ion-card-title>
-      <ion-card-subtitle>Tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-card-subtitle>
-      
-    </ion-card-header>
-  </ion-card>
+<ion-card style="width:fit-content;">
+  <ion-card-header>
+    <ion-card-title>{{tomorrowTasksCount}}</ion-card-title>
+    <ion-card-subtitle>Tasks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-card-subtitle>
+    
+  </ion-card-header>
+</ion-card>
 
-  <ion-card style="width:fit-content;">
-    <ion-card-header>
-      <ion-card-title>{{tomorrowTestsCount}}</ion-card-title>
-      <ion-card-subtitle>Tests&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-card-subtitle>
-      
-    </ion-card-header>
-  </ion-card>
+<ion-card style="width:fit-content;">
+  <ion-card-header>
+    <ion-card-title>{{tomorrowTestsCount}}</ion-card-title>
+    <ion-card-subtitle>Tests&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-card-subtitle>
+    
+  </ion-card-header>
+</ion-card>
 </div>
-  
+
 
 </ion-footer>

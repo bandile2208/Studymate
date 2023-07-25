@@ -5,15 +5,34 @@ ion-content{
 .custom-select {
     color: #182434;
     padding: 2px;
-    border-bottom: 1px solid #182434;
+    border-bottom: 3px solid #182434;
 }
 
 ion-input{
     --background: #ffffff;
     --color: #18243f;
-    border-bottom: 1px solid #182434;
+    border-bottom: 3px solid #182434;
   }
 
 ion-text{
     color: #18243f;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+ion-select,
+ion-input,
+ion-text {
+  width: 80%;
+  margin-left: 10%;
+  justify-self: center;
+}
+
+.hi{
+    color: white;
 }

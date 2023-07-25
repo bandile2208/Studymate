@@ -70,6 +70,21 @@ export class SignUpPage implements OnInit {
     }
   }
 
+  isValidEmail(email: string): boolean {
+    // A basic email validation pattern
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Check if the email matches the pattern
+    if (emailPattern.test(email)) {
+      // Additional validation: Check if the email provider domain is from a valid list
+      const validProviders = ['gmail.com', 'yahoo.com', 'outlook.com', 'microsoft.com', 'live.mut.ac.za', 'dutappfactory.tech', 'icloud.com', 'iCloud.com', 'mail.com']; // Add more if needed
+      const domain = email.split('@')[1].toLowerCase();
+      return validProviders.includes(domain);
+    }
+
+    return false;
+  }
+
   validation()
   {
     if(!this.user.firstname)
@@ -89,6 +104,10 @@ export class SignUpPage implements OnInit {
       this.showToast("Enter email address");
       return false;
   
+    }
+    if(!this.isValidEmail(this.user.email)){
+      this.showToast("Enter a valid email address from a valid email provider");
+      return false;
     }
     if(!this.user.password)
     {

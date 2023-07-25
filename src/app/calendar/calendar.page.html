@@ -1,21 +1,55 @@
 <ion-header>
   <ion-toolbar style="--background: #253852;">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button class="hi"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Calendar</ion-title>
+    <ion-title class="hi">Your Flashcards</ion-title>
 
     <ion-buttons slot="end">
-      
+      <ion-button class="hi" (click)="setOpen(true)"><ion-icon name="add"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content >
 
-  <ion-datetime class="calendar"></ion-datetime>
+  <br>
+
+  
+    <ng-container  *ngIf="notes">
+      <ion-card *ngFor="let note of notes | async">
+        <ion-card-header>
+          <ion-card-title>Title: {{note.Title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Notes: <br>
+          {{note.Content}}
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  
   
   
 
+  <ion-modal [isOpen]="isModalOpen" class="modal" mode="md">
+    <ng-template>
+      <ion-header style="--background: #253852;">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="setOpen(false)">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Add Note</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="addNote()">Save</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-input label="Title" label-placement="floating" [(ngModel)]="noteTitle"></ion-input>
+        <br>
+        <ion-textarea label="Notes" label-placement="floating" [(ngModel)]="noteContent"></ion-textarea>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

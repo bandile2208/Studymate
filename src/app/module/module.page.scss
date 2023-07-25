@@ -29,6 +29,10 @@ ion-checkbox{
     
 }
 
+.hi{
+    color: white;
+}
+
 p{
     color: #182434;
 }
@@ -52,4 +56,20 @@ p{
 
 .check{
     color: black;
+}
+
+ion-input,
+ion-select,
+ion-item{
+    width: 80%;
+  margin-left: 10%;
+  justify-self: center;
+  color: #182434;
+  border-bottom: 3px solid #182434;
+
+}
+
+ion-item{
+    background-color: #ffffff;
+    
 }

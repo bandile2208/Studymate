@@ -21,7 +21,27 @@
     <ion-button class="custom-button" (click)=login(user)>Sign in</ion-button>
   </div>
   <div class="forgot-password-container">
-    <a (click)="forgotPassword()" >Forgot Password?</a>
+    <a  (click)="setOpen(true)" >Forgot Password?</a>
+
+    <ion-modal [isOpen]="isModalOpen" class="modal" mode="md">
+      <ng-template>
+        <ion-header style="--background: #253852;">
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button (click)="setOpen(false)">Cancel</ion-button>
+            </ion-buttons>
+            <ion-title>Password Reset</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="forgotPassword()">Reset</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <ion-input label="Email" type="email"  [(ngModel)]="reset" class="test" style="border-bottom: 3px #253852;"></ion-input>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
   </div>
 
 </ion-content>

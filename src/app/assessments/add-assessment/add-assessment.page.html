@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar style="--background: #253852;">
     <ion-buttons slot="start">
-      <ion-button routerLink="/assessments">
+      <ion-button routerLink="/assessments" class="hi">
         Cancel
       </ion-button>
     </ion-buttons>
 
-    <ion-title>Add Exam/Test</ion-title>
+    <ion-title class="hi">Add Exam/Test</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="addAssessment()">
+      <ion-button (click)="addAssessment()" class="hi">
         Save
       </ion-button>
     </ion-buttons>
@@ -17,7 +17,7 @@
 </ion-header>
 
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="content-container">
   
   <ion-select label="Module" label-placement="floating" class="custom-select" [(ngModel)]="selectedModule">
     <ion-select-option value="development software" *ngFor="let module of modules | async" [value]="module">
@@ -31,12 +31,12 @@
     <ion-select-option value="Practical">Practical</ion-select-option>
   </ion-select>
 
-  <ion-input label="Date" type="date" label-placement="floating" [(ngModel)]="date"></ion-input>
+  <ion-input label="Date" type="date" label-placement="floating" [min]="minDate" [(ngModel)]="date"></ion-input>
 
   <ion-input label="Time" type="time" label-placement="floating" [(ngModel)]="time"></ion-input>
 
   <ion-input label="Duration" label-placement="floating" type="number" [(ngModel)]="duration"></ion-input>
-
+   <br>
   <ion-text><strong>Venue</strong></ion-text>
   
   <ion-input label="Building" label-placement="floating" [(ngModel)]="building"></ion-input>

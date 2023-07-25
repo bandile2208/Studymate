@@ -5,7 +5,10 @@ ion-content{
 ion-input{
     --background: #ffffff;
     --color: #18243f;
-     border-color:#18243f;
+     width: 80%;
+     margin-left: 10%;
+     justify-self: center;
+     border-bottom: 3px solid #182434;
   }
 
 .custom-select {
@@ -14,4 +17,8 @@ ion-input{
    /*border: 2px solid #182434;*/
    
    
+}
+
+.hi{
+    color: white;
 }

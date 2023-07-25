@@ -4,18 +4,41 @@ ion-content{
 .custom-select {
     color: #182434;
     padding: 2px;
-    border-bottom: 1px solid #182434;
+    border-bottom: 3px solid #182434;
 }
 
 ion-input{
     --background: #ffffff;
     --color: #18243f;
-    border-bottom: 1px solid #182434;
+    border-bottom: 3px solid #182434;
   }
 
 ion-textarea{
-    --background: #ffffff;
+    --background: #f0f0f0;
     --color: #18243f;
-    border-bottom: 1px solid #182434;
-    height: 123px;
+    border-bottom: 3px solid #182434;
+    max-height: 100%;
+    border-left: 2px solid #182434;
+    border-right: 2px solid #182434;
+    border-top: 3px solid #182434;
+    
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+ion-select,
+ion-input,
+ion-textarea {
+  width: 80%;
+  margin-left: 10%;
+  justify-self: center;
+}
+
+.hi{
+    color: rgb(255, 255, 255);
 }

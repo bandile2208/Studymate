@@ -12,6 +12,10 @@ ion-card{
     color: #182434;
 }
 
+.hi{
+    color: white;
+}
+
 ion-text{
     color: #18243f;
 }
@@ -25,3 +29,29 @@ ion-text{
 .test{
     border-bottom: 2px solid #182434;
 }
+
+ion-segment-button.selected{
+    background-color: #182434;
+    background: #182434;
+    
+}
+
+ion-segment{
+    background-color: #253852;
+}
+
+ion-card-subtitle{
+    color: #ffffff;
+  }
+  
+  ion-card-title{
+    color: #ffffff;
+  }
+  
+  ion-menu-button{
+    color: white;
+  }
+
+  ion-card-content{
+    color: #ffffff;
+  }

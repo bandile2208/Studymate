@@ -20,7 +20,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 @NgModule({
   declarations: [AppComponent],
   imports: [AngularFireAuthModule,AngularFirestoreModule,HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideRemoteConfig(() => getRemoteConfig()), provideStorage(() => getStorage())],
+    AngularFireModule.initializeApp(environment.firebaseConfig),BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideRemoteConfig(() => getRemoteConfig()), provideStorage(() => getStorage()), ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

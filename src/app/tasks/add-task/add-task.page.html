@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar style="--background: #253852;">
     <ion-buttons slot="start">
-      <ion-button routerLink="/tasks">
+      <ion-button routerLink="/tasks" class="hi">
         Cancel
       </ion-button>
     </ion-buttons>
 
-    <ion-title>New Task</ion-title>
+    <ion-title class="hi">New Task</ion-title>
 
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" class="hi">
       <ion-button (click)="addTask()">
         Save
       </ion-button>
@@ -17,7 +17,7 @@
 </ion-header>
 
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="content-container">
   
   <br>
   
@@ -33,14 +33,11 @@
         <ion-select-option value="revision">Revision</ion-select-option>
       </ion-select>
 
-      <ion-input label="Date" type="date" label-placement="floating" [(ngModel)]="date"></ion-input>
+      <ion-input label="Date" type="date" [min]="minDate" label-placement="floating" [(ngModel)]="date"></ion-input>
 
       <ion-input label="Title" label-placement="floating" [(ngModel)]="title"></ion-input>
-    
+    <br>
       <ion-textarea label="Details" label-placement="floating" [(ngModel)]="details"></ion-textarea>
-
-
-    
   
 
 </ion-content>

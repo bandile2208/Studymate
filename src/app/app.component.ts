@@ -5,6 +5,10 @@ import { ToastController} from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { AngularFirestore} from '@angular/fire/compat/firestore'
+import * as moment from 'moment';
+import { Platform } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-root',
@@ -15,6 +19,7 @@ export class AppComponent {
 
    firstName: string | undefined;
    lastName: string | undefined;
+   notificationTime: string = '12:45';
 
   constructor(private menuService: MenuService,
     private route: Router,
@@ -35,7 +40,56 @@ export class AppComponent {
         });
       }
     });
+
+   // this.scheduleNotification();
   } 
+
+
+
+  scheduleNotification() {
+    // Parse the notification time string to extract the hours and minutes
+    const time = moment(this.notificationTime, 'HH:mm');
+    const notificationHour = time.hours();
+    const notificationMinute = time.minutes();
+
+    // Get the current date and time
+    const now = moment();
+    const currentHour = now.hours();
+    const currentMinute = now.minutes();
+
+    // Calculate the time difference between now and the notification time
+    let timeDiff = moment.duration({
+      hours: notificationHour - currentHour,
+      minutes: notificationMinute - currentMinute
+    });
+
+    // If the notification time has already passed for today, schedule it for the next day
+    if (timeDiff.asMinutes() < 0) {
+      timeDiff = moment.duration({
+        hours: notificationHour + 24 - currentHour,
+        minutes: notificationMinute - currentMinute
+      });
+    }
+
+    // Calculate the total milliseconds until the notification should be triggered
+    const timeDiffMilliseconds = timeDiff.asMilliseconds();
+
+    // Use setInterval to schedule the notification
+    setInterval(() => {
+      this.sendNotification();
+    }, timeDiffMilliseconds);
+  }
+
+  sendNotification() {
+    // Replace this with code to trigger the notification on your phone
+    // This could involve using a native plugin, a service worker, or a third-party library
+    // For the sake of this example, we'll log a message to the console.
+    console.log('Notification triggered!');
+  }
+
+
+
+
 
   closeMenu() {
     this.menuService.closeMenu();
